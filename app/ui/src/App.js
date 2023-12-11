@@ -1,6 +1,29 @@
 // import logo from './logo.svg';
 import './App.css';
 
+async function exampleFetch() {
+  const response = await fetch('http://127.0.0.1:8000/');
+  const data = await response.json();
+  return data;
+}
+
+function NewBtn2() {
+
+  async function handleClick2() {
+    const data = await exampleFetch();
+    console.log(data.message);
+    alert("API Message -> " + data.message);
+  }
+
+  return (
+    <>
+      <button onClick={handleClick2}>
+        Fetch
+      </button>
+    </>
+  );
+}
+
 const products = [
   { id: 10, name: "Apple", price: 350.0 },
   { id: 14, name: "Orange", price: 200.0 },
@@ -21,10 +44,10 @@ function NewComp2() {
   );
 }
 
-function NewBtn1(){
+function NewBtn1() {
 
-  function handleClick1(){
-      alert("This is event alert");
+  function handleClick1() {
+    alert("This is event alert");
   }
 
   return (
@@ -36,7 +59,7 @@ function NewBtn1(){
   );
 }
 
-function NewComp1(){
+function NewComp1() {
   return (
     <>
       <div id="test1">Hello World!</div>
@@ -50,6 +73,7 @@ function App() {
       <NewComp1 />
       <NewBtn1 />
       <NewComp2 />
+      <NewBtn2 />
     </>
   );
 }
