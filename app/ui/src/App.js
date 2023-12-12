@@ -1,6 +1,38 @@
 // import logo from './logo.svg';
 import './App.css';
 
+const jsonData = {
+          "name": "alanhhhhhh", 
+          "age": 2366,
+          "username": "eeeeeaturing"
+}
+
+async function examplePost() {
+  await fetch('http://127.0.0.1:8000/', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(jsonData)
+  });
+}
+
+function NewBtn3() {
+
+  async function handleClick3() {
+    await examplePost();
+  }
+
+  return (
+    <>
+      <button onClick={handleClick3}>
+        Post
+      </button>
+    </>
+  );
+}
+
 async function exampleFetch() {
   const response = await fetch('http://127.0.0.1:8000/');
   const data = await response.json();
@@ -74,6 +106,7 @@ function App() {
       <NewBtn1 />
       <NewComp2 />
       <NewBtn2 />
+      <NewBtn3 />
     </>
   );
 }
