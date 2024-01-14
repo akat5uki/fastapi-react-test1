@@ -2,9 +2,9 @@
 import './App.css';
 
 const jsonData = {
-          "name": "alanhhhhhh", 
-          "age": 2366,
-          "username": "eeeeeaturing"
+  'name': 'Alibaba',
+  'age': 10,
+  'username': 'dev-ops-1'
 }
 
 async function examplePost() {
@@ -44,7 +44,6 @@ function NewBtn2() {
   async function handleClick2() {
     const data = await exampleFetch();
     console.log(data.message);
-    alert("API Message -> " + data.message);
   }
 
   return (

@@ -1,0 +1,4 @@
+$>  alembic heads
+$>  alembic revision --autogenerate -m "Message here"
+$>  alembic heads
+$>  alembic upgrade head
