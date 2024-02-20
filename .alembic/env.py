@@ -13,7 +13,7 @@ from app.db.models.items import BaseItem
 # access to the values within the .ini file in use.
 config = context.config
 
-ALEMBIC_DATABASE_URL = "sqlite:///./app/db/mydb.db"
+ALEMBIC_DATABASE_URL = "sqlite:///./app/db/mydb.sqlite3"
 # ***** This path is with respect to were *****
 # ***** alembic.ini file is situated.     *****
 config.set_main_option("sqlalchemy.url", ALEMBIC_DATABASE_URL)

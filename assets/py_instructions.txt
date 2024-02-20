@@ -1,0 +1,2 @@
+## Run below command from the root directory of the Project
+$>  py -m app.api.server

@@ -1,11 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
-class JsonData(BaseModel):
-    name: str
-    age: int
-    username: str
+from ..core.routers import users, auth
 
 app = FastAPI()
 
@@ -22,6 +18,27 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+app.include_router(users.router)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class JsonData(BaseModel):
+    name: str
+    age: int
+    username: str
 
 @app.get("/", tags=["root"])
 async def get_root() -> dict:

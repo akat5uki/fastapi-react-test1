@@ -8,6 +8,6 @@ class User(BaseUser):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     created_at = Column(
-        TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
+        TIMESTAMP(timezone=True), nullable=False, server_default=text("DATETIME('now')")
     )
     phone_number = Column(String)
