@@ -13,7 +13,7 @@ router = APIRouter(prefix="/users", tags=["Users"])
 #     return users
 
 
-@router.get("/{id}", response_model=UserOut)
+@router.get("/{id}", status_code=status.HTTP_200_OK, response_model=UserOut)
 async def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.id == id).first()
     if user is None:
