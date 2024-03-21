@@ -1,4 +1,4 @@
-.alembic/versions/
+.alembic/versions/*
 .vscode/
 
 # Byte-compiled / optimized / DLL files

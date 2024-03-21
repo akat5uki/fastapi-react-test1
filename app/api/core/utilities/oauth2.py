@@ -15,6 +15,7 @@ SECRET_KEY = settings.jwt_secret_key
 ALGORITHM = settings.jwt_algorithm
 ACCESS_TOKEN_EXPIRE_MINUTES = settings.jwt_access_token_expire_minutes
 
+
 def create_access_token(data: dict) -> str:
     to_encode = data.copy()
     expire = datetime.now(UTC) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -26,9 +27,7 @@ def create_access_token(data: dict) -> str:
 def verify_access_token(token: str, credentials_exception):
     try:
         payload: Dict[str, Any] = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        print("payload", payload)
         id: int | None = payload.get("user_id")
-        print("id", id)
         if id is None:
             raise credentials_exception
         token_data = TokenData(id=id)

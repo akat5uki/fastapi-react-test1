@@ -8,21 +8,15 @@ from ..utilities.tools import verify
 from ..utilities.oauth2 import create_access_token
 from ....db.models.users import User
 
-router = APIRouter(
-    prefix="/auth", 
-    tags=["Authentication"]
-)
+router = APIRouter(prefix="/login", tags=["Authentication"])
 
-@router.post("/login", response_model=Token)
+
+@router.post("/", response_model=Token)
 async def login(
     user_credentials: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: Annotated[Session, Depends(get_db)],
 ):
-    user = (
-        db.query(User)
-        .filter(User.email == user_credentials.username)
-        .first()
-    )
+    user = db.query(User).filter(User.email == user_credentials.username).first()
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Credentials"

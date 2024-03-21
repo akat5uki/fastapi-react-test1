@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ..core.routers import users, auth
+from ..core.routers import users, auth, items
 
-app = FastAPI()
+app = FastAPI(root_path="/api/v1")
 
 origins = [
     "http://localhost:3000",
@@ -19,6 +19,7 @@ app.add_middleware(
 
 app.include_router(users.router)
 app.include_router(auth.router)
+app.include_router(items.router)
 
 
 
