@@ -39,6 +39,7 @@ async def get_user(id: int, db: Annotated[Session, Depends(get_db)]) -> User:
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 async def create_user(user: UserCreate, db: Annotated[Session, Depends(get_db)]) -> User:
+    print(user)
     hashed_password = hash(user.password)
     user.password = hashed_password
     new_user = User(**user.model_dump())

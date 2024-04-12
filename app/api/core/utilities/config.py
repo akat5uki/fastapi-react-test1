@@ -1,3 +1,4 @@
+from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,3 +16,4 @@ class Settings(SettingsBase):
     jwt_secret_key: str = ""
     jwt_algorithm: str = ""
     jwt_access_token_expire_minutes: int = 0
+    cors_origins: List[str] = [""]
