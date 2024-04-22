@@ -23,7 +23,8 @@ def create_access_token(data: dict, res: Response) -> str:
     to_encode.update({"exp": expire.timestamp()})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     res.set_cookie(
-        key="__Client-MyCookie1",
+        key="__Host-MyCookie1",
+        # key="__Secure-MyCookie1",
         value=encoded_jwt,
         expires=expire,
         # domain="127.0.0.1",
